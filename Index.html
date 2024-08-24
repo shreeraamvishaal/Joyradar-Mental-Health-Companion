@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login and Signup</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gradient-to-br from-blue-400 via-purple-400 to-pink-500 flex items-center justify-center h-screen">
+    <div class="glass-container bg-white  rounded-lg shadow-md p-8 w-80">
+        <h1 class="text-3xl font-semibold mb-6 text-center">Login</h1>
+        <form id="loginPage">
+            <div class="mb-4">
+                <label for="loginUsername" class="block text-gray-600 font-semibold">Username:</label>
+                <input name="username" type="text" id="loginUsername" class="w-full p-2 border rounded shadow-sm" required>
+            </div>
+            <div class="mb-6">
+                <label for="loginPassword" class="block text-gray-600 font-semibold">Password:</label>
+                <input name="password" type="password" id="loginPassword" class="w-full p-2 border rounded shadow-sm" required>
+            </div>
+            <div class="text-center">
+                <button type="button"  onclick="authenticate()" class="bg-blue-500 text-white font-semibold py-2 px-4 rounded hover:bg-blue-600">Login</button>
+            </div>
+        </form>
+        <div class="text-center mt-4">
+            <p class="text-gray-600">Don't have an account?</p>
+            <button type="button" onclick="showSignupForm()" class="text-blue-500 font-semibold hover:underline">Sign up</button>
+        </div>
+    </div>
+    <script>
+
+        let defaultUsername = "admin";
+        let defaultPassword = "admin123";
+
+        function authenticate() {
+            const usernameInput = document.getElementById("loginUsername").value;
+            const passwordInput = document.getElementById("loginPassword").value;
+
+            if (usernameInput === defaultUsername && passwordInput === defaultPassword) {
+
+                window.location.href = "answer.html";
+            } else {
+                // Failed login
+                alert("Invalid username or password. Please try again.");
+            }
+        }
+
+        function createAccount() {
+            const newUsername = document.getElementById("signupUsername").value;
+            const newPassword = document.getElementById("signupPassword").value;
+
+            // Save the new username and password (for demonstration purposes only)
+            defaultUsername = newUsername;
+            defaultPassword = newPassword;
+
+            alert("Account created successfully. You can now login with your new credentials.");
+
+            // Show the login page after signup
+            document.getElementById("loginPage").style.display = "block";
+            document.getElementById("signupPage").style.display = "none";
+        }
+
+        function logout() {
+            // Clear the input fields
+            document.getElementById("loginUsername").value = "";
+            document.getElementById("loginPassword").value = "";
+
+            // Show the login page and hide the logged-in content
+            document.getElementById("loginPage").style.display = "block";
+            document.getElementById("signupPage").style.display = "none";
+            document.getElementById("loggedIn").style.display = "none";
+        }
+
+        function showLoginForm() {
+
+            document.getElementById("loginPage").style.display = "block";
+            document.getElementById("signupPage").style.display = "none";
+        }
+
+        function showSignupForm() {
+            window.location.href = "signup.html";
+        }
+    </script>
+</body>
+</html>
