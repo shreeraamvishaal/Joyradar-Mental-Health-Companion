@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Joyradar</title>
+    <meta name="author" content="name">
+    <meta name="description" content="description here">
+    <meta name="keywords" content="keywords,here">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet"> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js" integrity="sha256-xKeoJ50pzbUGkpQxDYHD7o7hxe0LaOGeguUidbq6vis=" crossorigin="anonymous"></script>
+
+</head>
+
+
+<body class="bg-gray-800 font-sans leading-normal tracking-normal mt-12">
+
+
+    <nav class="bg-gray-800 pt-2 md:pt-1 pb-1 px-1 mt-0 h-auto fixed w-full z-20 top-0">
+
+        <div class="flex flex-wrap items-center">
+            <div class="flex flex-shrink md:w-1/3 justify-center md:justify-start text-white">
+                <a href="#">
+                    <span class="text-xl pl-2"><i class="em em-grinning"></i></span>
+                    <span class="text-xl pl-2">Joyradar</span>
+                </a>
+            </div>
+
+            <div class="flex flex-1 md:w-1/3 justify-center md:justify-start text-white px-2">
+                <span class="relative w-full">
+                    <input type="search" placeholder="Search" class="w-full bg-gray-900 text-white transition border border-transparent focus:outline-none focus:border-gray-400 rounded py-3 px-2 pl-10 appearance-none leading-normal">
+                    <div class="absolute search-icon" style="top: 1rem; left: .8rem;">
+                        <svg class="fill-current pointer-events-none text-white w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                            <path d="M12.9 14.32a8 8 0 1 1 1.41-1.41l5.35 5.33-1.42 1.42-5.33-5.34zM8 14A6 6 0 1 0 8 2a6 6 0 0 0 0 12z"></path>
+                        </svg>
+                    </div>
+                </span>
+            </div>
+
+            <div class="flex w-full pt-2 content-center justify-between md:w-1/3 md:justify-end">
+                <ul class="list-reset flex justify-between flex-1 md:flex-none items-center">
+                    <li class="flex-1 md:flex-none md:mr-3">
+                        <a class="inline-block py-2 px-4 text-white no-underline" href="#">Active</a>
+                    </li>
+                    <li class="flex-1 md:flex-none md:mr-3">
+                        <a class="inline-block text-gray-600 no-underline hover:text-gray-200 hover:text-underline py-2 px-4" href="#"></a>
+                    </li>
+                    <li class="flex-1 md:flex-none md:mr-3">
+                        <div class="relative inline-block">
+                            <button onclick="toggleDD('myDropdown')" class="drop-button text-white focus:outline-none"> <span class="pr-2"><i class="em em-robot_face"></i></span> Guest <svg class="h-3 fill-current inline" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                    <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg></button>
+                            <div id="myDropdown" class="dropdownlist absolute bg-gray-800 text-white right-0 mt-3 p-3 overflow-auto z-30 invisible">
+                                <input type="text" class="drop-search p-2 text-gray-600" placeholder="Search.." id="myInput" onkeyup="filterDD('myDropdown','myInput')">
+                                <a href="#" class="p-2 hover:bg-gray-800 text-white text-sm no-underline hover:no-underline block"><i class="fa fa-user fa-fw"></i> Profile</a>
+                                <a href="#" class="p-2 hover:bg-gray-800 text-white text-sm no-underline hover:no-underline block"><i class="fa fa-cog fa-fw"></i> Settings</a>
+                                <div class="border border-gray-800"></div>
+                                <a href="#" class="p-2 hover:bg-gray-800 text-white text-sm no-underline hover:no-underline block"><i class="fas fa-sign-out-alt fa-fw"></i> Log Out</a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </nav>
+
+
+    <div class="flex flex-col md:flex-row">
+
+        <div class="bg-gray-800 shadow-xl h-16 fixed bottom-0 mt-12 md:relative md:h-screen z-10 w-full md:w-48">
+
+            <div class="md:mt-12 md:w-48 md:fixed md:left-0 md:top-0 content-center md:content-start text-left justify-between">
+                <ul class="list-reset flex flex-row md:flex-col py-0 md:py-3 px-1 md:px-2 text-center md:text-left">
+                    <li class="mr-3 flex-1">
+                        <a href="answer.html" class="block py-1 md:py-3 pl-1 align-middle text-white no-underline hover:text-white border-b-2 border-gray-800 hover:border-pink-500">
+                            <i class="fas fa-tasks pr-0 md:pr-3"></i><span class="pb-1 md:pb-0 text-xs md:text-base text-gray-600 md:text-gray-400 block md:inline-block">Answer me </span>
+                        </a>
+                    </li>
+                    <li class="mr-3 flex-1">
+                        <a href="graph.html" class="block py-1 md:py-3 pl-1 align-middle text-white no-underline hover:text-white border-b-2 border-gray-800 hover:border-purple-500">
+                            <i class="fa fa-envelope pr-0 md:pr-3"></i><span class="pb-1 md:pb-0 text-xs md:text-base text-gray-600 md:text-gray-400 block md:inline-block">Daily Records</span>
+                        </a>
+                    </li>
+                    <li class="mr-3 flex-1">
+                        <a href="journal.html" class="block py-1 md:py-3 pl-1 align-middle text-white no-underline hover:text-white border-b-2 hover:border-blue-600">
+                            <i class="fas fa-chart-area pr-0 md:pr-3 text-blue-600"></i><span class="pb-1 md:pb-0 text-xs md:text-base text-white md:text-white block md:inline-block">Time-Capsule Journaling</span></a>
+                    </li>
+                    <li class="mr-3 flex-1">
+                        <a href="boost.html" class="block py-1 md:py-3 pl-0 md:pl-1 align-middle text-white no-underline hover:text-white border-b-2 border-gray-800 border-red-500">
+                            <i class="fa fa-wallet pr-0 md:pr-3"></i><span class="pb-1 md:pb-0 text-xs md:text-base text-gray-600 md:text-gray-400 block md:inline-block">Today's Mooded Booster for you</span>
+                        </a>
+                    </li>
+                    <li class="mr-3 flex-1">
+                        <a href="dailyq.html" class="block py-1 md:py-3 pl-1 align-middle text-white no-underline hover:text-white border-b-2 border-gray-800 hover:border-green-500">
+                            <i class="fas fa-tasks pr-0 md:pr-3"></i><span class="pb-1 md:pb-0 text-xs md:text-base text-gray-600 md:text-gray-400 block md:inline-block">Daily Quotes</span>
+                        </a>
+                    </li>
+                    <li class="mr-3 flex-1">
+                        <a href="remainder.html" class="block py-1 md:py-3 pl-1 align-middle text-white no-underline hover:text-white border-b-2 border-gray-800 border-white-500">
+                            <i class="fas fa-tasks pr-0 md:pr-3"></i><span class="pb-1 md:pb-0 text-xs md:text-base text-gray-600 md:text-gray-400 block md:inline-block">Remainder</span>
+                        </a>
+                    </li>
+                    <li class="mr-3 flex-1">
+                        <a href="resource.html" class="block py-1 md:py-3 pl-1 align-middle text-white no-underline hover:text-white border-b-2 border-gray-800 border-white-500">
+                            <i class="fas fa-tasks pr-0 md:pr-3"></i><span class="pb-1 md:pb-0 text-xs md:text-base text-gray-600 md:text-gray-400 block md:inline-block">Resources Library</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+
+        </div>
+
+        <div class="main-content flex-1 bg-gray-100 mt-12 md:mt-2 pb-24 md:pb-5">
+
+            <div class="bg-gray-800 pt-3">
+                <div class="rounded-tl-3xl bg-gradient-to-r from-blue-900 to-gray-800 p-4 shadow text-2xl text-white">
+                    <h3 class="font-bold pl-2">Resources</h3>
+                </div>
+            </div>
+
+            <div class="flex flex-wrap">
+                <div class="w-full md:w-full xl:w-full p-6">
+                    <header class=" p-4 text-white text-center">
+                        <h1 class="text-3xl font-semibold">Playlist</h1>
+                    </header>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                    <div class="bg-white p-4 rounded-lg shadow-md">
+                        <a href="https://open.spotify.com/playlist/0zHkISuEcNr2Zav2X4TXCQ?si=da1656338440409d" target="_blank" rel="noopener noreferrer" class="hover:underline">
+                            <img src="https://i.scdn.co/image/ab67706c0000da84538a6c353e48b2e6ea6d6584" alt="Playlist Cover" class="w-full h-40 object-cover rounded">
+                            <h3 class="text-lg font-semibold mt-2">Depession Song</h3>
+
+                        </a>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg shadow-md">
+                        <a href="https://open.spotify.com/playlist/4qV7KqZRDE7SKt9RVYPa3k?si=f124fffc65664b5f" target="_blank" rel="noopener noreferrer" class="hover:underline">
+                            <img src="https://i.scdn.co/image/ab67706c0000da844885273e279de5ae7086c215" alt="Playlist Cover" class="w-full h-40 object-cover rounded">
+                            <h3 class="text-lg font-semibold mt-2">Way we die</h3>
+                        </a>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg shadow-md">
+                        <a href="https://open.spotify.com/playlist/6N0CkiGDIxbLG7zrocrEzY?si=184a231aa35246f2&nd=1" target="_blank" rel="noopener noreferrer" class="hover:underline">
+                            <img src="https://i.scdn.co/image/ab67706c0000da84df0242246fcc2c068c08e7e8" alt="Playlist Cover" class="w-full h-40 object-cover rounded">
+                            <h3 class="text-lg font-semibold mt-2">Late Night</h3>
+                        </a>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg shadow-md">
+                        <a href="https://open.spotify.com/playlist/4qV7KqZRDE7SKt9RVYPa3k?si=f124fffc65664b5f" target="_blank" rel="noopener noreferrer" class="hover:underline">
+                            <img src="https://i.scdn.co/image/ab67706c0000da8456046728bf481b46753ea600" alt="Playlist Cover" class="w-full h-40 object-cover rounded">
+                            <h3 class="text-lg font-semibold mt-2">3 am</h3>
+                        </a>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg shadow-md">
+                        <a href="https://open.spotify.com/playlist/6WwG6rIMSrp82RXwCT4vnV?si=7e6128f580be4303&nd=1" target="_blank" rel="noopener noreferrer" class="hover:underline">
+                            <img src="https://i.scdn.co/image/ab67706c0000da848c5d866d867f8aa19b3f3a85" alt="Playlist Cover" class="w-full h-40 object-cover rounded">
+                            <h3 class="text-lg font-semibold mt-2">Happy Sad</h3>
+                        </a>
+                    </div>
+                    </div>
+                    <header class=" p-4 text-white text-center">
+                        <h1 class="text-3xl font-semibold">Short Stories</h1>
+                    </header>
+
+                    <div class="max-w-6xl mx-auto py-8">
+                        <section>
+                            <h2 class="text-2xl font-semibold mb-4">Featured Stories</h2>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                                <div class="bg-white p-4 rounded-lg shadow-md">
+                                    <h3 class="text-lg font-semibold mt-2">The Butterfly's Struggle</h3>
+                                    <p class="text-gray-600">A boy watched a butterfly struggling to emerge from its cocoon. He tried to help by cutting it open but ended up damaging its wings. The butterfly never flew. The struggle was necessary for its wings to become strong. Sometimes, struggles make us stronger too.</p>
+                                </div>
+                                <div class="bg-white p-4 rounded-lg shadow-md">
+                                    <h3 class="text-lg font-semibold mt-2">The Wise Old Man</h3>
+                                    <p class="text-gray-600">A village was plagued by a huge boulder blocking its path. People tried to move it, but it wouldn't budge. Then, an old man came, looked at the boulder, and started chiseling away at it. Eventually, it broke apart, revealing a bag of gold. The obstacle was an opportunity.</p>
+                                </div>
+                                <div class="bg-white p-4 rounded-lg shadow-md">
+                                    <h3 class="text-lg font-semibold mt-2">The Starfish Thrower</h3>
+                                    <p class="text-gray-600">A man walked along the beach throwing starfish back into the sea. Someone asked why he bothered, as there were too many. He picked up another and replied, "It made a difference to that one." Small acts of kindness matter.</p>
+                                </div>
+                                <div class="bg-white p-4 rounded-lg shadow-md">
+                                    <h3 class="text-lg font-semibold mt-2">The Two Wolves</h3>
+                                    <p class="text-gray-600">A Cherokee elder told his grandson about two wolves inside us—one representing anger, greed, and fear, and the other representing love, compassion, and peace. "Which one wins?" asked the boy. The elder replied, "The one you feed."</p>
+                                </div>
+                                <div class="bg-white p-4 rounded-lg shadow-md">
+                                    <h3 class="text-lg font-semibold mt-2">The Cracked Pot</h3>
+                                    <p class="text-gray-600">A water bearer carried two pots daily. One was perfect, the other had a crack. The cracked pot felt ashamed. The water bearer said, "Notice the flowers on your side of the path? I've always known about your flaw, so I planted flower seeds on your side, and every day while we walk back, you water them."</p>
+                                </div>
+                                <div class="bg-white p-4 rounded-lg shadow-md">
+                                    <h3 class="text-lg font-semibold mt-2">The Elephant and the Rope</h3>
+                                    <p class="text-gray-600">A man saw elephants at a circus. He wondered why these massive creatures didn't escape with the tiny ropes tied to their legs. He asked a trainer who said, "They believe they can't because they learned when they were small." Limiting beliefs can hold us back.</p>
+                                </div>
+                                <div class="bg-white p-4 rounded-lg shadow-md">
+                                    <h3 class="text-lg font-semibold mt-2">The Three Trees</h3>
+                                    <p class="text-gray-600">Three trees on a hill each had big dreams. One wanted to be a treasure chest, another a strong ship, and the third the tallest tree in the forest. They were cut down for different purposes but found their dreams fulfilled in unexpected ways.</p>
+                                </div>
+                                <div class="bg-white p-4 rounded-lg shadow-md">
+                                    <h3 class="text-lg font-semibold mt-2">The Parable of the Pencil</h3>
+                                    <p class="text-gray-600">A boy asked his mom about the marks on the pencil. She explained that the pencil was like life—a useful tool in the hands of a great Creator. Every mark and erasure represents a lesson.</p>
+                                </div>
+                                <div class="bg-white p-4 rounded-lg shadow-md">
+                                    <h3 class="text-lg font-semibold mt-2">The Tale of the Tiny Frogs</h3>
+                                    <p class="text-gray-600">A group of frogs were racing to reach the top of a high tower. People gathered to watch. Most said it was impossible. But one frog made it to the top. How? Because he was deaf to the naysayers.</p>
+                                </div>
+                                <div class="bg-white p-4 rounded-lg shadow-md">
+                                    <h3 class="text-lg font-semibold mt-2">The Crabs in the Bucket</h3>
+                                    <p class="text-gray-600">A bucket of crabs doesn't need a lid. If one crab tries to climb out, the others will pull it back in. Don't let negativity or envy hold you back.</p>
+                                </div>
+                                <div class="bg-white p-4 rounded-lg shadow-md">
+                                    <h3 class="text-lg font-semibold mt-2">The Golden Buddha</h3>
+                                    <p class="text-gray-600">A statue thought to be made of clay was discovered to be made of solid gold when a monk noticed a piece of gold beneath a crack. Over time, layers of clay had been added to hide its true worth. We all have hidden potential within us.</p>
+                                </div>
+                                <div class="bg-white p-4 rounded-lg shadow-md">
+                                    <h3 class="text-lg font-semibold mt-2">The Farmer and His Sons</h3>
+                                    <p class="text-gray-600">A farmer, on his deathbed, asked his sons to break a bundle of sticks. They couldn't. Then he separated the sticks and asked them to break one each. They did it easily. He said, "Unity is strength."</p>
+                                </div>
+                                <div class="bg-white p-4 rounded-lg shadow-md">
+                                    <h3 class="text-lg font-semibold mt-2">The Tale of the Two Frogs</h3>
+                                    <p class="text-gray-600">Two frogs fell into a deep pit. The others told them they were as good as dead. They ignored them and jumped with all their might. The frogs at the top kept telling them to stop. One frog heeded their cries and died. The other continued to jump. Eventually, he made it out, proving that persistent effort can overcome negative voices.</p>
+                                </div>
+                                <div class="bg-white p-4 rounded-lg shadow-md">
+                                    <h3 class="text-lg font-semibold mt-2">The Starfish Story Revisited</h3>
+                                    <p class="text-gray-600">A young girl saw a man on the beach picking up starfish and throwing them into the sea. She asked why. He said, "It matters to this one." Her turn to throw a starfish back, she said, "And to this one."</p>
+                                </div>
+                                <div class="bg-white p-4 rounded-lg shadow-md">
+                                    <h3 class="text-lg font-semibold mt-2">The Little Engine That Could</h3>
+                                    <p class="text-gray-600">"I think I can, I think I can," said the little blue engine as it climbed a steep hill. With determination, it reached the top, proving that a positive attitude can conquer challenges.</p>
+                                </div>
+                                <div class="bg-white p-4 rounded-lg shadow-md">
+                                    <h3 class="text-lg font-semibold mt-2">The Tale of the Strugglesome Butterfly</h3>
+                                    <p class="text-gray-600">A man found a struggling butterfly and decided to help by cutting the cocoon open. The butterfly emerged but couldn't fly, as its wings were underdeveloped. Struggles are necessary for growth.</p>
+                                </div>
+                                <div class="bg-white p-4 rounded-lg shadow-md">
+                                    <h3 class="text-lg font-semibold mt-2">The Magic Mirror</h3>
+                                    <p class="text-gray-600">A young woman looked into a mirror and saw flaws. The mirror, which had the power to show inner beauty, revealed her true self when she started seeing the beauty within her.</p>
+                                </div>
+                                <div class="bg-white p-4 rounded-lg shadow-md">
+                                    <h3 class="text-lg font-semibold mt-2">The Stonecutter's Wish</h3>
+                                    <p class="text-gray-600">A stonecutter wished to be more powerful than anyone. He became a king, sun, cloud, and wind, but each time he realized there was something more powerful. He finally wished to be a stonecutter again but content with his life.</p>
+                                </div>
+                                <div class="bg-white p-4 rounded-lg shadow-md">
+                                    <h3 class="text-lg font-semibold mt-2">The Tale of the Lotus Flower</h3>
+                                    <p class="text-gray-600">The lotus flower grows in muddy waters but emerges pure and beautiful. It symbolizes purity and resilience in adversity.</p>
+                                </div>
+                                <div class="bg-white p-4 rounded-lg shadow-md">
+                                    <h3 class="text-lg font-semibold mt-2">The Eagle's Lesson</h3>
+                                    <p class="text-gray-600">An eagle's egg accidentally fell into a chicken's nest. The eagle grew up thinking it was a chicken until it saw another eagle soaring. It learned to fly, realizing its true potential.</p>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+
+            </div>
+
+
+        </div>
+    </div>
+</body>
+
+</html>
