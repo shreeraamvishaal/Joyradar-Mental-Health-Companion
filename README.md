@@ -1,4 +1,4 @@
-# Joyradar-Mental-Health-Companion
+# Mental-Health-Companion
 JoyRadar is a transformative digital platform that introduces a new era in emotional well-being. With
 an ever-increasing focus on mental health, JoyRadar emerges as a beacon of support, combining
 innovative technology with empathetic design to empower individuals in monitoring, understanding,
